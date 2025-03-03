@@ -261,4 +261,103 @@
         <mu2 value="0.5"/>
     </gazebo>
 
+    <!-- GRIPPER BASE -->
+
+    <joint name="gripper_base_joint" type="prismatic">
+        <parent link="chassis"/>
+        <child link="gripper_base"/>
+        <origin xyz="0.1 0 0.075" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-0.25" upper="0.1" effort="10.0" velocity="0.15"/>
+        <dynamics damping="0.005" friction="2.0"/>
+    </joint>
+
+    <link name="gripper_base">
+        <visual>
+            <origin xyz="0.23 0 0.075" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.06 0.32 0.06"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.23 0 0.075" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.06 0.32 0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.05" x="0.06" y="0.33" z="0.06">
+            <origin xyz="0.23 0 0.075" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+    <gazebo reference="gripper_base">
+        <material>Gazebo/black</material>
+    </gazebo>
+
+        <!-- GRIPPER RIGHT ARM -->
+
+    <joint name="gripper_R_joint" type="prismatic">
+        <parent link="gripper_base"/>
+        <child link="gripper_R"/>
+        <origin xyz="0.16 0.01 0.03" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="0" upper="0.16" effort="10.0" velocity="0.5"/>
+        <dynamics damping="0.05" friction="1.0"/>
+    </joint>
+
+    <link name="gripper_R">
+        <visual>
+            <origin xyz="0.16 0.01 0.03" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.14 0.02 0.06"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.16 0.01 0.03" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.14 0.02 0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.05" x="0.14" y="0.02" z="0.06">
+            <origin xyz="0.16 0.01 0.03" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+    <gazebo reference="gripper_R">
+        <material>Gazebo/black</material>
+    </gazebo>
+
+        <!-- GRIPPER LEFT ARM -->
+
+    <joint name="gripper_L_joint" type="prismatic">
+        <parent link="gripper_base"/>
+        <child link="gripper_L"/>
+        <origin xyz="0.16 -0.01 0.03" rpy="0 0 0"/>
+        <axis xyz="0 -1 0"/>
+        <limit lower="0" upper="0.16" effort="10.0" velocity="0.5"/>
+        <dynamics damping="0.05" friction="1.0"/>
+    </joint>
+
+    <link name="gripper_L">
+        <visual>
+            <origin xyz="0.16 -0.01 0.03" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.14 0.02 0.06"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.16 -0.01 0.03" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.14 0.02 0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.05" x="0.14" y="0.02" z="0.06">
+            <origin xyz="0.16 -0.01 0.03" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+    <gazebo reference="gripper_L">
+        <material>Gazebo/black</material>
+    </gazebo>
+
 </robot>
